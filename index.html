@@ -2,430 +2,419 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>المغيب للتطوير العقاري — مساعد العملاء</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>المغيب العقاري — واتساب</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     body {
-      font-family: 'Segoe UI', 'Arial', sans-serif;
-      background: #0f1117;
-      color: #e8e8e8;
-      height: 100dvh;
+      font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #111b21;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
+      height: 100dvh;
     }
 
-    /* ── CHAT WRAPPER ── */
-    .chat-wrapper {
+    /* ── PHONE FRAME (desktop) ── */
+    .phone {
       width: 100%;
-      max-width: 500px;
+      max-width: 420px;
       height: 100dvh;
       max-height: 820px;
       display: flex;
       flex-direction: column;
-      background: #16181f;
-      border-radius: 20px;
+      background: #0b141a;
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
     }
 
     /* ── HEADER ── */
-    .header {
-      background: linear-gradient(135deg, #1a3a2a 0%, #0d2318 100%);
-      padding: 18px 20px;
+    .wa-header {
+      background: #202c33;
+      padding: 10px 16px;
       display: flex;
       align-items: center;
-      gap: 14px;
-      border-bottom: 1px solid #2a4035;
+      gap: 12px;
+      flex-shrink: 0;
+      border-bottom: 1px solid #2a3942;
     }
 
-    .logo-circle {
-      width: 46px;
-      height: 46px;
+    .back-btn {
+      color: #00a884;
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #2ecc71, #27ae60);
+      background: linear-gradient(135deg, #00a884, #007a60);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
+      font-size: 20px;
       flex-shrink: 0;
-      box-shadow: 0 0 16px rgba(46,204,113,0.4);
     }
 
-    .header-info { flex: 1; }
-    .header-info h1 { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: 0.3px; }
-    .header-info p  { font-size: 11.5px; color: #7ec99a; margin-top: 2px; }
-
-    .status-dot {
-      width: 9px; height: 9px;
-      background: #2ecc71;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #2ecc71;
-      animation: pulse 2s infinite;
+    .contact-info { flex: 1; min-width: 0; }
+    .contact-info h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e9edef;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .contact-info p {
+      font-size: 12px;
+      color: #00a884;
+      margin-top: 1px;
     }
 
-    @keyframes pulse {
-      0%,100% { opacity: 1; }
-      50%      { opacity: 0.4; }
-    }
+    .header-icons { display: flex; gap: 20px; color: #aebac1; font-size: 20px; }
 
-    /* ── MESSAGES ── */
-    .messages {
+    /* ── CHAT BACKGROUND ── */
+    .chat-bg {
       flex: 1;
       overflow-y: auto;
-      padding: 20px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      overflow-x: hidden;
+      padding: 12px 8px 8px;
+      background-color: #0b141a;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23182229' fill-opacity='0.6'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
       scroll-behavior: smooth;
     }
 
-    .messages::-webkit-scrollbar { width: 4px; }
-    .messages::-webkit-scrollbar-track { background: transparent; }
-    .messages::-webkit-scrollbar-thumb { background: #2a3040; border-radius: 4px; }
+    .chat-bg::-webkit-scrollbar { width: 5px; }
+    .chat-bg::-webkit-scrollbar-track { background: transparent; }
+    .chat-bg::-webkit-scrollbar-thumb { background: #2a3942; border-radius: 3px; }
 
-    /* ── BUBBLE ── */
-    .bubble-row {
+    /* ── DATE BADGE ── */
+    .date-badge {
+      text-align: center;
+      margin: 8px 0 14px;
+    }
+    .date-badge span {
+      background: #182229;
+      color: #8696a0;
+      font-size: 11.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* ── MESSAGES ── */
+    .msg-wrap {
       display: flex;
-      align-items: flex-end;
-      gap: 8px;
+      margin-bottom: 2px;
     }
-
-    .bubble-row.bot  { justify-content: flex-start; }
-    .bubble-row.user { justify-content: flex-end; flex-direction: row-reverse; }
-
-    .avatar {
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #2ecc71, #1a8a4a);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
+    .msg-wrap.bot  { justify-content: flex-start; padding-right: 40px; }
+    .msg-wrap.user { justify-content: flex-end;   padding-left: 40px; }
+    .msg-wrap.bot + .msg-wrap.user,
+    .msg-wrap.user + .msg-wrap.bot { margin-top: 8px; }
 
     .bubble {
-      max-width: 78%;
-      padding: 11px 15px;
-      border-radius: 18px;
-      font-size: 13.5px;
-      line-height: 1.65;
+      max-width: 85%;
+      padding: 7px 10px 6px 12px;
+      border-radius: 8px;
+      font-size: 14.2px;
+      line-height: 1.55;
+      position: relative;
       word-break: break-word;
       white-space: pre-wrap;
     }
 
-    .bubble-row.bot  .bubble {
-      background: #1e2330;
-      color: #d8e0ec;
-      border-bottom-right-radius: 4px;
-      border: 1px solid #2a3040;
+    /* Bot bubble (incoming) */
+    .msg-wrap.bot .bubble {
+      background: #202c33;
+      color: #e9edef;
+      border-top-right-radius: 0;
+    }
+    .msg-wrap.bot .bubble::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -8px;
+      border: 8px solid transparent;
+      border-top-color: #202c33;
+      border-right: none;
     }
 
-    .bubble-row.user .bubble {
-      background: linear-gradient(135deg, #1e5c35, #2ecc71);
-      color: #fff;
-      border-bottom-left-radius: 4px;
+    /* User bubble (outgoing) */
+    .msg-wrap.user .bubble {
+      background: #005c4b;
+      color: #e9edef;
+      border-top-left-radius: 0;
+    }
+    .msg-wrap.user .bubble::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -8px;
+      border: 8px solid transparent;
+      border-top-color: #005c4b;
+      border-left: none;
     }
 
-    .bubble time {
-      display: block;
-      font-size: 10px;
-      opacity: 0.5;
-      margin-top: 5px;
-      text-align: left;
+    .bubble-time {
+      font-size: 10.5px;
+      color: #8696a0;
+      float: left;
+      margin-top: 3px;
+      margin-right: -2px;
+      margin-left: 6px;
+      line-height: 1;
+    }
+    .msg-wrap.user .bubble-time::after {
+      content: ' ✓✓';
+      color: #53bdeb;
     }
 
     /* ── TYPING INDICATOR ── */
-    .typing-row { display: flex; align-items: flex-end; gap: 8px; }
-
-    .typing-bubble {
-      background: #1e2330;
-      border: 1px solid #2a3040;
-      border-radius: 18px;
-      border-bottom-right-radius: 4px;
-      padding: 12px 16px;
-      display: flex; gap: 5px; align-items: center;
-    }
-
-    .dot {
-      width: 7px; height: 7px;
-      background: #5a7a6a;
-      border-radius: 50%;
-      animation: bounce 1.4s infinite ease-in-out;
-    }
-    .dot:nth-child(1) { animation-delay: 0s; }
-    .dot:nth-child(2) { animation-delay: 0.2s; }
-    .dot:nth-child(3) { animation-delay: 0.4s; }
-
-    @keyframes bounce {
-      0%,80%,100% { transform: translateY(0); opacity: 0.4; }
-      40%          { transform: translateY(-6px); opacity: 1; }
-    }
-
-    /* ── INPUT AREA ── */
-    .input-area {
-      padding: 14px 14px 18px;
-      background: #16181f;
-      border-top: 1px solid #1e2330;
+    .typing-wrap {
       display: flex;
-      gap: 10px;
-      align-items: flex-end;
+      justify-content: flex-start;
+      padding-right: 40px;
+      margin-bottom: 8px;
+    }
+    .typing-bubble {
+      background: #202c33;
+      border-radius: 8px;
+      border-top-right-radius: 0;
+      padding: 12px 14px 10px;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .typing-bubble::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -8px;
+      border: 8px solid transparent;
+      border-top-color: #202c33;
+      border-right: none;
+    }
+    .td {
+      width: 8px; height: 8px;
+      background: #8696a0;
+      border-radius: 50%;
+      animation: tdBounce 1.3s infinite ease-in-out;
+    }
+    .td:nth-child(1) { animation-delay: 0s; }
+    .td:nth-child(2) { animation-delay: 0.2s; }
+    .td:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes tdBounce {
+      0%,60%,100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-5px); opacity: 1; }
     }
 
-    textarea {
+    /* ── INPUT BAR ── */
+    .input-bar {
+      background: #202c33;
+      padding: 8px 10px;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .input-box {
       flex: 1;
-      background: #1e2330;
-      border: 1px solid #2a3545;
-      border-radius: 14px;
-      color: #e0e8f0;
-      font-size: 13.5px;
-      padding: 11px 14px;
+      background: #2a3942;
+      border: none;
+      border-radius: 22px;
+      padding: 10px 16px;
+      color: #e9edef;
+      font-size: 14.5px;
+      font-family: inherit;
       resize: none;
       outline: none;
       min-height: 44px;
-      max-height: 130px;
+      max-height: 120px;
       line-height: 1.5;
-      font-family: inherit;
-      transition: border-color 0.2s;
       direction: auto;
     }
-
-    textarea:focus { border-color: #2ecc71; }
-    textarea::placeholder { color: #4a5568; }
+    .input-box::placeholder { color: #8696a0; }
 
     .send-btn {
       width: 44px; height: 44px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #2ecc71, #1a8a4a);
+      background: #00a884;
       border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .send-btn:hover  { background: #00cf9d; }
+    .send-btn:active { transform: scale(0.93); }
+    .send-btn:disabled { background: #2a3942; cursor: default; transform: none; }
+    .send-btn svg { width: 22px; height: 22px; fill: #fff; }
+
+    .emoji-btn {
+      width: 40px; height: 44px;
+      background: none;
+      border: none;
+      color: #8696a0;
+      font-size: 22px;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      transition: transform 0.15s, box-shadow 0.15s;
-      box-shadow: 0 4px 14px rgba(46,204,113,0.35);
     }
-
-    .send-btn:hover  { transform: scale(1.08); box-shadow: 0 6px 18px rgba(46,204,113,0.5); }
-    .send-btn:active { transform: scale(0.95); }
-    .send-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-    .send-btn svg { width: 20px; height: 20px; fill: #fff; }
-
-    /* ── SESSION BADGE ── */
-    .session-badge {
-      text-align: center;
-      font-size: 10.5px;
-      color: #3a4a5a;
-      padding: 6px 0 2px;
-      letter-spacing: 0.5px;
-    }
-
-    /* ── WELCOME CARD ── */
-    .welcome {
-      background: linear-gradient(135deg, #1a3a2a, #0f2018);
-      border: 1px solid #2a4035;
-      border-radius: 14px;
-      padding: 18px;
-      margin: 8px 0 4px;
-      text-align: center;
-    }
-
-    .welcome h2 { font-size: 16px; color: #2ecc71; margin-bottom: 6px; }
-    .welcome p  { font-size: 12.5px; color: #8aab9a; line-height: 1.7; }
 
     /* ── QUICK REPLIES ── */
-    .quick-replies {
+    .quick-wrap {
+      padding: 6px 8px 2px;
       display: flex;
       flex-wrap: wrap;
-      gap: 7px;
-      padding: 4px 0;
+      gap: 6px;
       justify-content: flex-start;
     }
-
-    .qr-btn {
-      background: #1e2b38;
-      border: 1px solid #2a4050;
-      color: #7ec9aa;
-      border-radius: 20px;
-      padding: 6px 13px;
-      font-size: 12px;
+    .qr {
+      background: #202c33;
+      border: 1px solid #2a3942;
+      color: #00a884;
+      border-radius: 18px;
+      padding: 5px 13px;
+      font-size: 13px;
       cursor: pointer;
-      transition: background 0.15s, border-color 0.15s;
       font-family: inherit;
+      transition: background 0.15s;
+      white-space: nowrap;
     }
+    .qr:hover { background: #2a3942; }
 
-    .qr-btn:hover { background: #1e3a2a; border-color: #2ecc71; color: #2ecc71; }
-
-    /* ── LEAD SAVED BADGE ── */
-    .lead-saved {
-      text-align: center;
-      padding: 8px 14px;
-      background: linear-gradient(90deg, #0d2318, #1a3a2a, #0d2318);
-      border: 1px solid #2a4035;
-      border-radius: 10px;
-      font-size: 11.5px;
-      color: #2ecc71;
-    }
-
-    /* mobile */
-    @media (max-width: 520px) {
-      .chat-wrapper { border-radius: 0; max-height: 100dvh; }
+    @media (max-width: 440px) {
+      .phone { max-height: 100dvh; border-radius: 0; }
     }
   </style>
 </head>
 <body>
 
-<div class="chat-wrapper">
+<div class="phone">
 
   <!-- Header -->
-  <div class="header">
-    <div class="logo-circle">🏢</div>
-    <div class="header-info">
-      <h1>المغيب للتطوير العقاري</h1>
-      <p>Al-Mughib Real Estate — AI Assistant</p>
+  <div class="wa-header">
+    <div class="back-btn">‹</div>
+    <div class="avatar">🏢</div>
+    <div class="contact-info">
+      <h2>المغيب للتطوير العقاري</h2>
+      <p id="status-text">متصل الآن • online</p>
     </div>
-    <div class="status-dot"></div>
+    <div class="header-icons">
+      <span title="اتصال">📞</span>
+      <span title="المزيد">⋮</span>
+    </div>
   </div>
 
-  <!-- Messages -->
-  <div class="messages" id="messages">
+  <!-- Chat area -->
+  <div class="chat-bg" id="chat">
 
-    <!-- Welcome card -->
-    <div class="welcome">
-      <h2>مرحباً بك 👋</h2>
-      <p>أنا مساعدك الذكي في المغيب للتطوير العقاري.<br>سأساعدك في إيجاد عقارك المثالي.</p>
-    </div>
+    <div class="date-badge"><span>اليوم • Today</span></div>
 
-    <!-- Greeting message from bot -->
-    <div class="bubble-row bot" id="greeting-row">
-      <div class="avatar">🤖</div>
+    <!-- Welcome message -->
+    <div class="msg-wrap bot" id="welcome-msg">
       <div class="bubble">
-        أهلاً وسهلاً! أنا مساعد المغيب للتطوير العقاري 🏠<br><br>
-        يسعدني مساعدتك في العثور على العقار المناسب لك. هل يمكنني البدء بمعرفة اسمك؟
-        <time id="greeting-time"></time>
+        أهلاً وسهلاً! 👋 أنا مساعد المغيب للتطوير العقاري.<br><br>
+        يسعدني مساعدتك في أي شيء يخص العقارات — سواء كنت تبحث عن شراء، إيجار، استثمار، أو لديك أي سؤال.<br><br>
+        كيف أقدر أساعدك اليوم؟
+        <span class="bubble-time" id="welcome-time"></span>
       </div>
     </div>
 
     <!-- Quick replies -->
-    <div class="bubble-row bot">
-      <div style="width:30px;flex-shrink:0;"></div>
-      <div class="quick-replies" id="quick-replies">
-        <button class="qr-btn" onclick="sendQuick('مرحباً، أريد شراء شقة')">🏠 شراء شقة</button>
-        <button class="qr-btn" onclick="sendQuick('أبحث عن فيلا للبيع')">🏡 فيلا</button>
-        <button class="qr-btn" onclick="sendQuick('أريد الاستثمار في عقار')">📈 استثمار</button>
-        <button class="qr-btn" onclick="sendQuick('Hello, I need help finding a property')">🇬🇧 English</button>
-      </div>
+    <div class="quick-wrap" id="qr-wrap">
+      <button class="qr" onclick="sendQuick('أريد شراء شقة في الرياض')">🏠 شراء شقة</button>
+      <button class="qr" onclick="sendQuick('ما هي مشاريع المغيب؟')">🏗️ مشاريعكم</button>
+      <button class="qr" onclick="sendQuick('كم أسعار العقارات في حي الصحافة؟')">💰 الأسعار</button>
+      <button class="qr" onclick="sendQuick('I want to invest in real estate')">🇬🇧 English</button>
     </div>
 
   </div>
 
-  <!-- Session badge -->
-  <div class="session-badge" id="session-badge">جلسة جديدة</div>
-
-  <!-- Input -->
-  <div class="input-area">
+  <!-- Input bar -->
+  <div class="input-bar">
+    <button class="emoji-btn">😊</button>
     <textarea
+      class="input-box"
       id="input"
-      placeholder="اكتب رسالتك هنا... / Type your message..."
+      placeholder="اكتب رسالة..."
       rows="1"
       onkeydown="handleKey(event)"
-      oninput="autoResize(this)"
+      oninput="grow(this)"
     ></textarea>
-    <button class="send-btn" id="send-btn" onclick="sendMessage()" title="إرسال">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-      </svg>
+    <button class="send-btn" id="send-btn" onclick="send()">
+      <svg viewBox="0 0 24 24"><path d="M1.101 21.757L23.8 12.028 1.101 2.3l.011 7.912 13.623 1.816-13.623 1.817-.011 7.912z"/></svg>
     </button>
   </div>
 
 </div>
 
 <script>
-  // ── CONFIG ──────────────────────────────────────────────
-  const WEBHOOK_URL = 'https://abudii.app.n8n.cloud/webhook/real-estate-leads';
+  const WEBHOOK = 'https://abudii.app.n8n.cloud/webhook/real-estate-leads';
 
-  // ── SESSION ─────────────────────────────────────────────
-  let sessionId = localStorage.getItem('re_session_id');
-  if (!sessionId) {
-    sessionId = 'demo_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
-    localStorage.setItem('re_session_id', sessionId);
+  // Session ID
+  let sid = sessionStorage.getItem('wa_sid');
+  if (!sid) {
+    sid = 'wa_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
+    sessionStorage.setItem('wa_sid', sid);
   }
 
-  const badge = document.getElementById('session-badge');
-  badge.textContent = 'Session: ' + sessionId.slice(0, 24) + '…';
+  // Set welcome time
+  document.getElementById('welcome-time').textContent = clock();
 
-  // Set greeting time
-  document.getElementById('greeting-time').textContent = now();
-
-  // ── HELPERS ─────────────────────────────────────────────
-  function now() {
-    return new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
+  function clock() {
+    return new Date().toLocaleTimeString('ar', {hour:'2-digit', minute:'2-digit'});
   }
 
-  function autoResize(el) {
+  function grow(el) {
     el.style.height = 'auto';
-    el.style.height = Math.min(el.scrollHeight, 130) + 'px';
+    el.style.height = Math.min(el.scrollHeight, 120) + 'px';
   }
 
   function handleKey(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
   }
 
-  function scrollBottom() {
-    const m = document.getElementById('messages');
-    m.scrollTop = m.scrollHeight;
+  function scrollDown() {
+    const c = document.getElementById('chat');
+    setTimeout(() => c.scrollTop = c.scrollHeight, 50);
   }
 
-  // ── RENDER MESSAGES ─────────────────────────────────────
-  function appendMessage(role, text) {
-    const msgs = document.getElementById('messages');
-
-    // Remove quick replies after first user message
+  function addMsg(role, text) {
+    // Remove quick replies on first user message
     if (role === 'user') {
-      const qr = document.getElementById('quick-replies');
+      const qr = document.getElementById('qr-wrap');
       if (qr) qr.remove();
     }
 
-    const row = document.createElement('div');
-    row.className = 'bubble-row ' + role;
+    const chat = document.getElementById('chat');
+    const wrap = document.createElement('div');
+    wrap.className = 'msg-wrap ' + role;
 
-    if (role === 'bot') {
-      row.innerHTML = `
-        <div class="avatar">🤖</div>
-        <div class="bubble">${escapeHtml(text)}<time>${now()}</time></div>
-      `;
-    } else {
-      row.innerHTML = `
-        <div class="bubble">${escapeHtml(text)}<time>${now()}</time></div>
-        <div class="avatar" style="background:linear-gradient(135deg,#2a5080,#1a3a60)">👤</div>
-      `;
-    }
+    const bbl = document.createElement('div');
+    bbl.className = 'bubble';
+    bbl.innerHTML = nl2br(esc(text)) +
+      `<span class="bubble-time">${clock()}</span>`;
 
-    msgs.appendChild(row);
-    scrollBottom();
-    return row;
+    wrap.appendChild(bbl);
+    chat.appendChild(wrap);
+    scrollDown();
   }
 
   function showTyping() {
-    const msgs = document.getElementById('messages');
-    const row = document.createElement('div');
-    row.className = 'typing-row';
-    row.id = 'typing';
-    row.innerHTML = `
-      <div class="avatar">🤖</div>
-      <div class="typing-bubble">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
-    `;
-    msgs.appendChild(row);
-    scrollBottom();
+    const chat = document.getElementById('chat');
+    const wrap = document.createElement('div');
+    wrap.className = 'typing-wrap';
+    wrap.id = 'typing';
+    wrap.style.position = 'relative';
+    wrap.innerHTML = `<div class="typing-bubble"><div class="td"></div><div class="td"></div><div class="td"></div></div>`;
+    chat.appendChild(wrap);
+    scrollDown();
   }
 
   function hideTyping() {
@@ -433,84 +422,64 @@
     if (t) t.remove();
   }
 
-  function showLeadSaved() {
-    const msgs = document.getElementById('messages');
-    const el = document.createElement('div');
-    el.className = 'lead-saved';
-    el.innerHTML = '✅ تم حفظ بياناتك — Lead Saved to Google Sheets';
-    msgs.appendChild(el);
-    scrollBottom();
+  function esc(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
+  function nl2br(s) { return s.replace(/\n/g,'<br>'); }
 
-  function escapeHtml(text) {
-    return text
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/\n/g, '<br>');
-  }
-
-  // ── SEND ─────────────────────────────────────────────────
   let busy = false;
 
-  async function sendMessage() {
-    const input = document.getElementById('input');
-    const btn   = document.getElementById('send-btn');
-    const text  = input.value.trim();
+  async function send() {
+    const inp = document.getElementById('input');
+    const btn = document.getElementById('send-btn');
+    const text = inp.value.trim();
     if (!text || busy) return;
 
     busy = true;
     btn.disabled = true;
-    input.value = '';
-    input.style.height = 'auto';
+    inp.value = '';
+    inp.style.height = 'auto';
 
-    appendMessage('user', text);
+    addMsg('user', text);
     showTyping();
 
+    // Show "typing..." in status
+    document.getElementById('status-text').textContent = 'يكتب الآن... • typing';
+
     try {
-      const res = await fetch(WEBHOOK_URL, {
+      const res = await fetch(WEBHOOK, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: text,
-          session_id: sessionId
-        })
+        body: JSON.stringify({ message: text, session_id: sid })
       });
 
       hideTyping();
 
       if (!res.ok) {
-        const errText = await res.text();
-        appendMessage('bot', `⚠️ خطأ في الاتصال (${res.status}). تأكد من تفعيل الـ workflow في n8n.\n\nError: ${errText.slice(0, 200)}`);
+        const err = await res.text().catch(() => '');
+        addMsg('bot', '⚠️ حدث خطأ في الخادم (' + res.status + '). الرجاء المحاولة مرة أخرى.\n\n' + err.slice(0,150));
       } else {
         const reply = await res.text();
-        appendMessage('bot', reply || '...');
-
-        // Detect if lead was saved
-        if (reply.includes('تم تسجيل') || reply.includes('saved') || reply.includes('سيتواصل')) {
-          showLeadSaved();
-        }
+        addMsg('bot', reply && reply.trim() ? reply.trim() : 'عذراً، لم أفهم طلبك. هل يمكنك إعادة الصياغة؟');
       }
 
-    } catch (err) {
+    } catch(e) {
       hideTyping();
-      appendMessage('bot',
-        '⚠️ تعذّر الاتصال بالخادم.\n\nتأكد من:\n• تفعيل الـ workflow في n8n\n• إضافة بيانات OpenAI و Google Sheets\n\n' + err.message
+      addMsg('bot',
+        '⚠️ تعذّر الاتصال بالخادم.\n\nتأكد من تفعيل الـ workflow في n8n وإضافة بيانات OpenAI.\n\n' + e.message
       );
     } finally {
+      document.getElementById('status-text').textContent = 'متصل الآن • online';
       busy = false;
       btn.disabled = false;
-      input.focus();
+      inp.focus();
     }
   }
 
-  function sendQuick(text) {
-    document.getElementById('input').value = text;
-    sendMessage();
+  function sendQuick(t) {
+    document.getElementById('input').value = t;
+    send();
   }
-
-  // Focus input on load
-  document.getElementById('input').focus();
 </script>
 
 </body>
