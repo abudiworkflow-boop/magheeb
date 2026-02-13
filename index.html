@@ -48,16 +48,26 @@
     }
 
     .avatar {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: linear-gradient(135deg, #00a884, #007a60);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
       flex-shrink: 0;
+      overflow: hidden;
+      box-shadow: 0 0 0 2px #00a88433;
     }
+    .avatar-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .avatar-logo .ar { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -1px; }
+    .avatar-logo .en { font-size: 7px; color: rgba(255,255,255,0.8); font-weight: 600; letter-spacing: 0.5px; margin-top: 1px; }
 
     .contact-info { flex: 1; min-width: 0; }
     .contact-info h2 {
@@ -300,9 +310,14 @@
   <!-- Header -->
   <div class="wa-header">
     <div class="back-btn">‹</div>
-    <div class="avatar">🏢</div>
+    <div class="avatar">
+      <div class="avatar-logo">
+        <span class="ar">مغيب</span>
+        <span class="en">REAL ESTATE</span>
+      </div>
+    </div>
     <div class="contact-info">
-      <h2>المغيب للتطوير العقاري</h2>
+      <h2>المغيب للتطوير العقاري <span style="color:#00a884;font-size:13px">✓</span></h2>
       <p id="status-text">متصل الآن • online</p>
     </div>
     <div class="header-icons">
@@ -328,10 +343,11 @@
 
     <!-- Quick replies -->
     <div class="quick-wrap" id="qr-wrap">
-      <button class="qr" onclick="sendQuick('أريد شراء شقة في الرياض')">🏠 شراء شقة</button>
-      <button class="qr" onclick="sendQuick('ما هي مشاريع المغيب؟')">🏗️ مشاريعكم</button>
+      <button class="qr" onclick="sendQuick('أريد شراء شقة في الرياض، ما هي الخيارات المتاحة؟')">🏠 شراء شقة</button>
+      <button class="qr" onclick="sendQuick('ما هو برج المغيب وما مميزاته؟')">🏗️ برج المغيب</button>
       <button class="qr" onclick="sendQuick('كم أسعار العقارات في حي الصحافة؟')">💰 الأسعار</button>
-      <button class="qr" onclick="sendQuick('I want to invest in real estate')">🇬🇧 English</button>
+      <button class="qr" onclick="sendQuick('أريد الاستثمار في عقار، من أين أبدأ؟')">📈 استثمار</button>
+      <button class="qr" onclick="sendQuick('I am looking for office space in Riyadh')">🇬🇧 English</button>
     </div>
 
   </div>
